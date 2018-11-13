@@ -1,0 +1,11 @@
+- name: Add vivado group
+  group:
+    name: "{{ vivado_group }}"
+    state: present
+
+- name: Add vivado user
+  user:
+    name: "{{ vivado_user }}"
+    comment: "Vivado user"
+    group: "{{ vivado_group }}"
+    system: yes

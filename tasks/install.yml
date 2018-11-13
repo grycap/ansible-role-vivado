@@ -1,0 +1,18 @@
+- name: "Download Vivado from url"
+  download_url: 
+    url: "{{ nomad_url }}"
+    dest: "/tmp/vivado.tar.gz"
+    owner: "{{ vivado_user }}"
+    group: "{{ vivado_group }}"
+  register: result
+  until: result|success
+  retries: 5
+  delay: 2
+
+- name: "Unarchive /tmp/vivado.tar.g"
+  unarchive: 
+    src: "/tmp/vivado.tar.gz"
+    remote_src: yes 
+    dest: "/tmp/vivado"
+    owner: "{{ vivado_user }}"
+    group: "{{ vivado_group }}"

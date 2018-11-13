@@ -1,0 +1,16 @@
+---
+- name: "Checks system"
+  include: checks.yml
+
+- name: "Creating user and group"
+  include: create_user.yml
+  
+- name: "Install role requeriments"
+  include: requeriments.yml
+
+- name: "Install Vivado"
+  include: install.yml
+
+- name: "Configure Vivado"
+  include: configure.yml
+
