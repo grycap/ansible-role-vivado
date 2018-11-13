@@ -1,7 +1,7 @@
 ---
 - name: "Download Vivado from url"
-  download_url: 
-    url: "{{ nomad_url }}"
+  get_url: 
+    url: "{{ download_url }}"
     dest: "/tmp/vivado.tar.gz"
     owner: "{{ vivado_user }}"
     group: "{{ vivado_group }}"
