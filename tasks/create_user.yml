@@ -1,3 +1,4 @@
+---
 - name: Add vivado group
   group:
     name: "{{ vivado_group }}"
