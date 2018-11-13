@@ -10,10 +10,15 @@
   retries: 5
   delay: 2
 
+- name: "Create /tmp/vivado"
+  file: 
+    path: /tmp/vivado
+    state: directory
+
 - name: "Unarchive /tmp/vivado.tar.g"
   unarchive: 
     src: "/tmp/vivado.tar.gz"
     remote_src: yes 
-    dest: "/tmp/vivado"
+    dest: "/home/{{ vivado_user }}"
     owner: "{{ vivado_user }}"
     group: "{{ vivado_group }}"
