@@ -5,16 +5,16 @@
       pkg: "{{ item }}"
       state: latest
     with_items:
-    - libX11
+      - libX11
 
   when: ansible_os_family == "RedHat"
 
 - block:
   - name: "Install required packages on Ubuntu"
     apt:
-    pkg: "{{ item }}" 
-    state: latest
-  with_items:
-    - libx11-dev
+      pkg: "{{ item }}" 
+      state: latest
+    with_items:
+      - libx11-dev
 
   when: ansible_os_family == "Debian"
