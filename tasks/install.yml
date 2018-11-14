@@ -6,7 +6,7 @@
     owner: "{{ vivado_user }}"
     group: "{{ vivado_group }}"
   register: result
-  until: result|success
+  until: result is success
   retries: 5
   delay: 2
 
@@ -14,14 +14,28 @@
   unarchive: 
     src: "/tmp/vivado.tar.gz"
     remote_src: yes 
-    dest: "/home/{{ vivado_user }}"
+    creates: "{{ vivado_tmp_installation_dir }}/vivado"
+    dest: "{{ vivado_tmp_installation_dir }}"
     owner: "{{ vivado_user }}"
     group: "{{ vivado_group }}"
+
+- name: "Remove old installation file"
+  file: 
+    path: "{{ vivado_tmp_installation_dir }}/install_config.txt"
+    state: absent
 
 - name: "Configure the installation file"
   template:
     src: install_config.txt.j2
-    dest: "/home/{{ vivado_user }}/install_config.txt"
+    dest: "{{ vivado_tmp_installation_dir }}/install_config.txt"
     owner: "{{ vivado_user }}"
     group: "{{ vivado_group }}"
     mode: 0644
+
+- name: "Install Vivado"
+  command: "{{ vivado_tmp_installation_dir }}/vivado/xsetup --agree {{ vivado_licenses_agreement }} --batch Install --config {{ vivado_tmp_installation_dir}}/install_config.txt"
+
+
+
+
+    

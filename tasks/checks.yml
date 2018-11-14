@@ -33,3 +33,4 @@
   fail:
     msg: "{{ vivado_create_file_association }} is wrong, it must be 0 or 1 "
   when: vivado_create_file_association not in vivado_conf_bool
+

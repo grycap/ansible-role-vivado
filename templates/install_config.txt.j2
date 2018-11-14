@@ -5,10 +5,12 @@ Edition={{ vivado_edition }}
 Destination={{ vivado_installation_path }}
 
 # Choose the Products/Devices the you would like to install.
-Modules={% for module, install in vivado_modules.items() -%}{{ module }}:{{ install }}{% if not loop.last %},{% endif %} {%- endfor -%}
+Modules={% for module, install in vivado_modules.items() -%}{{ module }}:{{ install }}{% if not loop.last %},{% endif %} {%- endfor %}
+
 
 # Choose the post install scripts you'd like to run as part of the finalization step. Please note that some of these scripts may require user interaction during runtime.
-InstallOptions={% for module, install in vivado_install_options.items() -%}{{ module }}:{{ install }}{% if not loop.last %},{% endif %} {%- endfor -%}
+InstallOptions={% for module, install in vivado_install_options.items() -%}{{ module }}:{{ install }}{% if not loop.last %},{% endif %} {%- endfor %}
+
 
 ## Shortcuts and File associations ##
 # Choose whether Start menu/Application menu shortcuts will be created or not.

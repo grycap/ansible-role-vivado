@@ -5,12 +5,9 @@
 - name: "Creating user and group"
   include: create_user.yml
   
-- name: "Install role requeriments"
+- name: "Install Vivado requeriments"
   include: requeriments.yml
 
 - name: "Install Vivado"
   include: install.yml
-
-- name: "Configure Vivado"
-  include: configure.yml
 

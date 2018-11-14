@@ -3,6 +3,10 @@ vivado_download_url: http://fakeweb
 vivado_user: vivado
 vivado_group: vivado
 
+vivado_licenses_agreement: XilinxEULA,3rdPartyEULA,WebTalkTerms
+vivado_tmp_installation_dir: /tmp
+vivado_version: 2018.2
+
 #### Vivado HL WebPACK Install Configuration ####
 vivado_edition: Vivado HL WebPACK  
 
@@ -49,3 +53,4 @@ vivado_create_desktop_shortcuts: 0
 
 # Choose whether file associations will be created or not.
 vivado_create_file_association: 0
+

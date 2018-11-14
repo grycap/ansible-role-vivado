@@ -1,1 +1,20 @@
 ---
+- block:
+  - name: "Install required packages on RedHat"
+    yum:
+      pkg: "{{ item }}"
+      state: latest
+    with_items:
+    - libX11
+
+  when: ansible_os_family == "RedHat"
+
+- block:
+  - name: "Install required packages on Ubuntu"
+    apt:
+    pkg: "{{ item }}" 
+    state: latest
+  with_items:
+    - libx11-dev
+
+  when: ansible_os_family == "Debian"
