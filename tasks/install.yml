@@ -13,7 +13,7 @@
 - name: "Create {{ vivado_tmp_installation_dir }}/vivado directory"
   file: 
     path: "{{ vivado_tmp_installation_dir }}/vivado"
-    state: present
+    state: directory
 
 - name: "Unarchive /tmp/vivado.tar.g"
   unarchive: 
