@@ -19,11 +19,6 @@
     msg: "{{ vivado_create_program_group_shortcut }} is wrong, it must be 0 or 1 "
   when: vivado_create_program_group_shortcut not in vivado_conf_bool
 
-- name: "Checking if vivado_program_group_folder is ok "
-  fail:
-    msg: "{{ vivado_program_group_folder }} is wrong, it must be 0 or 1 "
-  when: vivado_program_group_folder not in vivado_conf_bool
-
 - name: "Checking if vivado_create_shortcuts_for_all_users is ok "
   fail:
     msg: "{{ vivado_create_shortcuts_for_all_users }} is wrong, it must be 0 or 1 "
