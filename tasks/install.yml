@@ -10,14 +10,19 @@
   retries: 5
   delay: 2
 
+- name: "Create {{ vivado_tmp_installation_dir }}/vivado directory"
+  file: 
+    path: "{{ vivado_tmp_installation_dir }}/vivado"
+    state: present
+
 - name: "Unarchive /tmp/vivado.tar.g"
   unarchive: 
     src: "/tmp/vivado.tar.gz"
     remote_src: yes 
-    creates: "{{ vivado_tmp_installation_dir }}/vivado"
-    dest: "{{ vivado_tmp_installation_dir }}"
+    dest: "{{ vivado_tmp_installation_dir }}/vivado"
     owner: "{{ vivado_user }}"
     group: "{{ vivado_group }}"
+    extra_opts: [ --strip-components=1 ]
 
 - name: "Remove old installation file"
   file: 
@@ -35,6 +40,8 @@
 - name: "Install Vivado"
   command: "{{ vivado_tmp_installation_dir }}/vivado/xsetup --agree {{ vivado_licenses_agreement }} --batch Install --config {{ vivado_tmp_installation_dir}}/install_config.txt"
 
+- name: "Change permisions for {{ vivado_installation_path }} directory"
+  command: "chown -R {{ vivado_user }}:{{ vivado_group }} {{ vivado_installation_path }}"
 
 
 
