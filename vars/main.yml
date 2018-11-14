@@ -1,2 +1,20 @@
 ---
-# vars file for ansible-role-vivado
+os_valid_distributions:
+  - RedHat
+  - CentOS
+  - Ubuntu
+
+os_minimum_versions:
+  RedHat: 6.6
+  CentOS: 6.7
+  Ubuntu: 16.04
+
+valid_vivado_editions:
+  - Vivado HL WebPACK
+  - Vivado HL Design Edition
+  - Vivado HL System Edition
+  - Documentation Navigator (Standalone)
+
+vivado_conf_bool:
+  - 0
+  - 1

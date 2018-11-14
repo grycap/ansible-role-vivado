@@ -1,1 +1,40 @@
 ---
+- name: "Checking distribution"
+  fail:
+    msg: "{{ ansible_distribution }} is not supported"
+  when: ansible_distribution not in os_valid_distributions
+
+- name: "Checking version of OS"
+  fail:
+    msg: "{{ ansible_distribution_version}} of {{ ansible_distribution }} is not supported"
+  when: ansible_distribution_version|version_compare(os_minimum_versions[ansible_distribution], '<')
+
+- name: "Checking if vivado_edition is ok "
+  fail:
+    msg: "{{ vivado_edition }} is wrong "
+  when: vivado_edition not in valid_vivado_editions
+
+- name: "Checking if vivado_create_program_group_shortcut is ok "
+  fail:
+    msg: "{{ vivado_create_program_group_shortcut }} is wrong, it must be 0 or 1 "
+  when: vivado_create_program_group_shortcut not in vivado_conf_bool
+
+- name: "Checking if vivado_program_group_folder is ok "
+  fail:
+    msg: "{{ vivado_program_group_folder }} is wrong, it must be 0 or 1 "
+  when: vivado_program_group_folder not in vivado_conf_bool
+
+- name: "Checking if vivado_create_shortcuts_for_all_users is ok "
+  fail:
+    msg: "{{ vivado_create_shortcuts_for_all_users }} is wrong, it must be 0 or 1 "
+  when: vivado_create_shortcuts_for_all_users not in vivado_conf_bool
+
+- name: "Checking if vivado_create_desktop_shortcuts is ok "
+  fail:
+    msg: "{{ vivado_create_desktop_shortcuts }} is wrong, it must be 0 or 1 "
+  when: vivado_create_desktop_shortcuts not in vivado_conf_bool
+
+- name: "Checking if vivado_create_file_association is ok "
+  fail:
+    msg: "{{ vivado_create_file_association }} is wrong, it must be 0 or 1 "
+  when: vivado_create_file_association not in vivado_conf_bool

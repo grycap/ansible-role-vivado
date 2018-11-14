@@ -1,0 +1,27 @@
+#### {{ vivado_edition }} Install Configuration ####
+Edition={{ vivado_edition }}
+
+# Path where Xilinx software will be installed.
+Destination={{ vivado_installation_path }}
+
+# Choose the Products/Devices the you would like to install.
+Modules={% for module, install in vivado_modules.items() -%}{{ module }}:{{ install }}{% if not loop.last %},{% endif %} {%- endfor -%}
+
+# Choose the post install scripts you'd like to run as part of the finalization step. Please note that some of these scripts may require user interaction during runtime.
+InstallOptions={% for module, install in vivado_install_options.items() -%}{{ module }}:{{ install }}{% if not loop.last %},{% endif %} {%- endfor -%}
+
+## Shortcuts and File associations ##
+# Choose whether Start menu/Application menu shortcuts will be created or not.
+CreateProgramGroupShortcuts={{ vivado_create_program_group_shortcut }}
+
+# Choose the name of the Start menu/Application menu shortcut. This setting will be ignored if you choose NOT to create shortcuts.
+ProgramGroupFolder={{ vivado_program_group_folder }}
+
+# Choose whether shortcuts will be created for All users or just the Current user. Shortcuts can be created for all users only if you run the installer as administrator.
+CreateShortcutsForAllUsers={{ vivado_create_shortcuts_for_all_users }}
+
+# Choose whether shortcuts will be created on the desktop or not.
+CreateDesktopShortcuts={{ vivado_create_desktop_shortcuts }}
+
+# Choose whether file associations will be created or not.
+CreateFileAssociation={{ vivado_create_file_association }}
